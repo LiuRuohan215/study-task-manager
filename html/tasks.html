@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyTask Manager - My Tasks</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- same navigation as the home page -->
+    <header>
+        <h1 class="logo">StudyTask Manager</h1>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="tasks.html">My Tasks</a>
+            <a href="blog.html">Blog</a>
+            <a href="ethics.html">Ethics</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- login area, shown first -->
+        <section id="login-area" class="about">
+            <h2>Login</h2>
+            <p>Please log in to view and manage your tasks.</p>
+            <label for="username">Username:</label>
+            <br>
+            <input type="text" id="username">
+            <br><br>
+            <label for="password">Password:</label>
+            <br>
+            <input type="password" id="password">
+            <br><br>
+            <button type="button" id="login-btn">Login</button>
+            <p id="login-error" class="error-message"></p>
+        </section>
+
+        <!-- task area, hidden until the user logs in -->
+        <div id="task-area" style="display: none;">
+
+            <!-- form for adding or editing a task -->
+            <section class="about">
+                <h2 id="form-heading">Add a New Task</h2>
+                <label for="task-title">Task title:</label>
+                <br>
+                <input type="text" id="task-title" placeholder="e.g. Complete Assignment 3">
+                <br><br>
+
+                <label for="course-code">Course code:</label>
+                <br>
+                <input type="text" id="course-code" placeholder="e.g. INFO1012">
+                <br><br>
+
+                <label for="course-name">Course name:</label>
+                <br>
+                <input type="text" id="course-name" placeholder="e.g. Information Technology Systems">
+                <br><br>
+
+                <label for="due-date">Due date:</label>
+                <br>
+                <input type="date" id="due-date">
+                <br><br>
+
+                <label for="task-description">Task description:</label>
+                <br>
+                <textarea id="task-description" rows="3"></textarea>
+                <br><br>
+
+                <label for="task-notes">Additional notes:</label>
+                <br>
+                <textarea id="task-notes" rows="2"></textarea>
+                <br><br>
+
+                <button type="button" id="save-btn">Add Task</button>
+                <button type="button" id="cancel-btn" style="display: none;">Cancel</button>
+                <p id="form-error" class="error-message"></p>
+            </section>
+
+            <!-- table that shows every task -->
+            <section class="about">
+                <h2>All My Tasks</h2>
+                <table id="task-table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Course</th>
+                            <th>Due Date</th>
+                            <th>Description</th>
+                            <th>Notes</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="task-list"></tbody>
+                </table>
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p id="current-time"></p>
+    </footer>
+
+    <script src="../js/tasks.js"></script>
+</body>
+</html>
