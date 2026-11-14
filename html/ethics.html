@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyTask Manager - Ethics</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- same navigation as the other pages -->
+    <header>
+        <h1 class="logo">StudyTask Manager</h1>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="tasks.html">My Tasks</a>
+            <a href="blog.html">Blog</a>
+            <a href="ethics.html">Ethics</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="about">
+            <h2>Ethics and Privacy Reflection</h2>
+            <p>The tasks entered into this app are personal information. A student's deadlines and course work can show what they are studying and how busy they are, so that data should be treated carefully. While building the app, I tried to make ethical and privacy-conscious choices rather than adding them at the end.</p>
+
+            <h3>How the App Supports Ethical Data Use</h3>
+            <ul>
+                <li><strong>Only necessary data is collected.</strong> The form asks for the title, course, due date, description and notes, which are all needed to manage a task. It does not ask for extra personal details such as a phone number or address.</li>
+                <li><strong>Input validation protects data quality.</strong> Empty required fields and invalid past dates are rejected with clear messages, so incorrect or meaningless data is not stored.</li>
+                <li><strong>Data stays on the user's machine.</strong> Tasks are kept in the browser and are not sent to any server or shared anywhere else.</li>
+            </ul>
+
+            <h3>How the App Supports Data Privacy</h3>
+            <ul>
+                <li><strong>Access is restricted by a login.</strong> The task page cannot be opened without the correct username and password, so another person using the same computer cannot view the tasks.</li>
+                <li><strong>The password is hidden while typing.</strong> The password field displays dots instead of the actual characters.</li>
+                <li><strong>The user controls their data.</strong> Any task can be edited or deleted, including the confirmation step before deletion, so nothing has to stay stored longer than the user wants.</li>
+            </ul>
+
+            <h3>Reflection</h3>
+            <p>This project showed me that privacy is part of the design process, not a feature added afterwards. Simple decisions such as limiting the fields in the form, requiring a login and letting the user delete their data all reduce the risk to personal information. Even a small application handling user-generated data has an ethical responsibility to collect less, protect access and keep the user in control.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Ruohan Liu | INFO1012 Assignment 3</p>
+    </footer>
+
+</body>
+</html>
