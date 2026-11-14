@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyTask Manager - Blog</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+    <!-- same navigation as the other pages -->
+    <header>
+        <h1 class="logo">StudyTask Manager</h1>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="tasks.html">My Tasks</a>
+            <a href="blog.html">Blog</a>
+            <a href="ethics.html">Ethics</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <!-- project plan and agile approach -->
+        <section class="about">
+            <h2>Project Plan: My Agile Approach</h2>
+            <p>Agile is a way of building software step by step. Instead of planning everything at the start, the work is split into short periods called sprints. Each sprint produces something that actually runs, and the next sprint adds more features on top of it.</p>
+            <p>I used a few Agile ideas while building this app:</p>
+            <ul>
+                <li>I divided the work into three weekly sprints, each with a clear goal.</li>
+                <li>I built the simplest working version first and added features after that.</li>
+                <li>I tested as I went, so problems were fixed straight away instead of all at the end.</li>
+            </ul>
+            <p>I chose this approach because I was working alone. Small steps kept the project organised, and when something broke it was easier to find which change caused it.</p>
+
+            <h3>Three-Week Sprint Plan</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Week</th>
+                        <th>Planning</th>
+                        <th>Analysis</th>
+                        <th>Design</th>
+                        <th>Implementation</th>
+                        <th>Testing &amp; Maintenance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Week 1</td>
+                        <td>Picked the study task idea and listed the required pages</td>
+                        <td>Looked at how existing to-do apps are organised</td>
+                        <td>Sketched the home page layout on paper</td>
+                        <td>Built the home page HTML</td>
+                        <td>Checked that links and images open correctly</td>
+                    </tr>
+                    <tr>
+                        <td>Week 2</td>
+                        <td>Listed the fields every task needs</td>
+                        <td>Studied login and validation examples</td>
+                        <td>Designed the task form and table</td>
+                        <td>Built login, CRUD and data validation</td>
+                        <td>Tested empty and invalid inputs</td>
+                    </tr>
+                    <tr>
+                        <td>Week 3</td>
+                        <td>Planned the two written pages</td>
+                        <td>Reviewed Agile and ethics notes</td>
+                        <td>Designed the blog and ethics layout</td>
+                        <td>Built the blog and ethics pages</td>
+                        <td>Ran a full test, fixed bugs and updated the README</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- troubleshooting records -->
+        <section class="about">
+            <h2>Troubleshooting Blog</h2>
+
+            <!-- error 1 -->
+            <h3>Error 1: Clicking Add Task Did Nothing</h3>
+            <p><strong>Encountered:</strong> 13 November 2026, 2:05 pm</p>
+            <p>When I clicked the Add Task button, nothing happened. The console showed the following error:</p>
+            <img class="blog-image" src="../images/error1-console.png" alt="Console error showing Cannot read properties of null">
+            <p>The code that caused the problem:</p>
+            <pre><code>var saveButton = document.getElementById("save-button");
+saveButton.addEventListener("click", function () {
+    // save the task
+});</code></pre>
+
+            <p><strong>Resolved:</strong> 13 November 2026, 2:18 pm</p>
+            <img class="blog-image" src="../images/error1-fixed.png" alt="The working task form after the fix">
+            <p>The corrected code:</p>
+            <pre><code>var saveButton = document.getElementById("save-btn");
+saveButton.addEventListener("click", function () {
+    // save the task
+});</code></pre>
+            <p><strong>Explanation:</strong> I had written "save-button" in getElementById, but the id in the HTML was "save-btn". Because no element matched, getElementById returned null, and calling addEventListener on null threw a TypeError. I fixed the id to match the HTML, and the button worked. I also learned to check the id spelling first when a button does not respond.</p>
+
+            <!-- error 2 -->
+            <h3>Error 2: A Past Due Date Was Accepted</h3>
+            <p><strong>Encountered:</strong> 13 November 2026, 2:25 pm</p>
+            <p>The validation was supposed to reject past dates, but a task dated 1 November was still added to the table:</p>
+            <img class="blog-image" src="../images/error2-past-date.png" alt="A task with a past date shown in the table">
+            <p>The code that caused the problem:</p>
+            <pre><code>var today = new Date();
+if (dueDate &lt; today) {
+    formError.textContent = "Due date cannot be in the past.";
+}</code></pre>
+
+            <p><strong>Resolved:</strong> 13 November 2026, 2:40 pm</p>
+            <img class="blog-image" src="../images/error2-fixed.png" alt="Error message shown for a past date">
+            <p>The corrected code:</p>
+            <pre><code>var today = new Date();
+today.setHours(0, 0, 0, 0);
+var selectedDate = new Date(dueDate + "T00:00:00");
+if (selectedDate &lt; today) {
+    formError.textContent = "Due date cannot be in the past.";
+}</code></pre>
+            <p><strong>Explanation:</strong> dueDate was a string from the date input, but today was a Date object. Comparing a string directly with a Date did not work as expected, so the check never ran. I converted dueDate into a Date object first, and set both dates to midnight so the time would not affect the comparison. After that, past dates were correctly rejected. The MDN web docs helped me understand how the Date object works.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Ruohan Liu | INFO1012 Assignment 3</p>
+    </footer>
+
+</body>
+</html>
